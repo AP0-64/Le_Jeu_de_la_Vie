@@ -11,3 +11,22 @@ def nouvelle_generation(taille_grille, cellules, etat_cellules):
         for j in range(taille_grille):
             etat_cellules[i][j] = prochaine_generation[i][j]
     return
+
+# Variables globales
+running = False  # État de l'automatisation (jeu en pause ou en cours)
+vitesse = 500  # Intervalle de temps entre chaque génération (en ms)
+
+def arret_marche():
+    """Active ou désactive l'avancement automatique."""
+    global running
+    running = not running
+    return running  # Retourne l'état actuel
+
+def avancer_automatiquement(fenetre: Tk, taille_grille, cellules, etat_cellules):
+    """Fait avancer le jeu automatiquement si running est actif."""
+    global running
+    if running:
+        from temps.running import nouvelle_generation  # Import local pour éviter les dépendances circulaires
+        nouvelle_generation(taille_grille, cellules, etat_cellules)
+        # Appelle cette fonction après un délai (si toujours actif)
+        fenetre.after(vitesse, avancer_automatiquement, fenetre, taille_grille, cellules, etat_cellules)
