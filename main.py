@@ -1,6 +1,5 @@
 from monde.monde import monde
-from regles.configuration import calculer_prochaine_generation
-from temps.running import avancer_automatiquement, nouvelle_generation, arret_marche
+from temps.running import avancer_automatiquement, arret_marche
 from tkinter import *
 
 
