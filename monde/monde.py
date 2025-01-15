@@ -3,7 +3,7 @@ from tkinter import *
 
 def monde():
     # Taille de la grille
-    taille_grille = 18
+    taille_grille = 50
 
     # Création de la fenêtre
     fenetre = Tk()
