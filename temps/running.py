@@ -20,7 +20,7 @@ def arret_marche():
     """Active ou désactive l'avancement automatique."""
     global running
     running = not running
-    return running  # Retourne l'état actuel
+    return
 
 def avancer_automatiquement(fenetre: Tk, taille_grille, cellules, etat_cellules):
     """Fait avancer le jeu automatiquement si running est actif."""
@@ -30,3 +30,10 @@ def avancer_automatiquement(fenetre: Tk, taille_grille, cellules, etat_cellules)
         nouvelle_generation(taille_grille, cellules, etat_cellules)
         # Appelle cette fonction après un délai (si toujours actif)
         fenetre.after(vitesse, avancer_automatiquement, fenetre, taille_grille, cellules, etat_cellules)
+    return
+
+def bouton_arret_marche(fenetre, taille_grille, cellules, etat_cellules):
+    """Gère l'état d'automatisation."""
+    arret_marche()  # Inverse l'état de `running`
+    avancer_automatiquement(fenetre, taille_grille, cellules, etat_cellules)
+    return
