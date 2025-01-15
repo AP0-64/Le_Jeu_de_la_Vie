@@ -2,6 +2,10 @@ from regles.configuration import calculer_prochaine_generation
 from regles.configuration import mettre_a_jour_interface
 from tkinter import *
 
+# Variables globales
+running = False  # État de l'automatisation (jeu en pause ou en cours)
+vitesse = 500  # Intervalle de temps entre chaque génération (en ms)
+
 # Fonction pour générer une nouvelle génération
 def nouvelle_generation(taille_grille, cellules, etat_cellules):
     prochaine_generation = calculer_prochaine_generation(etat_cellules, taille_grille)
@@ -11,10 +15,6 @@ def nouvelle_generation(taille_grille, cellules, etat_cellules):
         for j in range(taille_grille):
             etat_cellules[i][j] = prochaine_generation[i][j]
     return
-
-# Variables globales
-running = False  # État de l'automatisation (jeu en pause ou en cours)
-vitesse = 500  # Intervalle de temps entre chaque génération (en ms)
 
 def arret_marche():
     """Active ou désactive l'avancement automatique."""
@@ -37,3 +37,13 @@ def bouton_arret_marche(fenetre, taille_grille, cellules, etat_cellules):
     arret_marche()  # Inverse l'état de `running`
     avancer_automatiquement(fenetre, taille_grille, cellules, etat_cellules)
     return
+
+def vitesse_X1(event=None):
+    global vitesse
+    vitesse = 500
+    return vitesse
+
+def vitesse_X2(event=None):
+    global vitesse
+    vitesse = 1
+    return vitesse
