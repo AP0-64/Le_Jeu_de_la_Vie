@@ -4,7 +4,7 @@ from tkinter import *
 
 # Variables globales
 running = False  # État de l'automatisation (jeu en pause ou en cours)
-vitesse = 500  # Intervalle de temps entre chaque génération (en ms)
+vitesse = 1  # Intervalle de temps entre chaque génération (en ms)
 
 # Fonction pour générer une nouvelle génération
 def nouvelle_generation(taille_grille, cellules, etat_cellules):
